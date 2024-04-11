@@ -13,7 +13,7 @@ dotenv.config({
 
 app.use(cors({
     credentials:true,
-    origin:'https://science-spot.vercel.app/',
+    origin:'https://science-spot-frontend.vercel.app/',
 }));
 
 app.use(express.json())

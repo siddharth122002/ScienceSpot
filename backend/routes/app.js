@@ -24,8 +24,8 @@ const isLoggedIn =async(req,res,next)=>{
     next();
 }
 
-router.get('test',(req,res)=>{
-    res.send("working");
+router.get('/test',(req,res)=>{
+    res.send("working test");
 })
 
 router.get('/',isLoggedIn,async(req,res)=>{

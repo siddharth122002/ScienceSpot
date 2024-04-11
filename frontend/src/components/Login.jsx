@@ -10,7 +10,7 @@ export default function Login() {
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('http://localhost:3000/login', {
+            const { data } = await axios.post('https://science-spot.vercel.app/login', {
                 email: email,
                 password: password,
             }, {

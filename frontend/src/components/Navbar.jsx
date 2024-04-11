@@ -9,7 +9,7 @@ export default function Home() {
     useEffect(() => {
         const checkLoggedInStatus = async () => {
             try {
-                const { data } = await axios.get('https://sci-spotbackend.vercel.app/', {
+                const { data } = await axios.get('https://science-spot.vercel.app/', {
                     withCredentials: true,
                 });
                 if (data !== "no") {
@@ -25,7 +25,7 @@ export default function Home() {
 
     const logout = async () => {
         try {
-            const { data } = await axios.get('https://sci-spotbackend.vercel.app/logout', {
+            const { data } = await axios.get('https://science-spot.vercel.app/logout', {
                 withCredentials: true,
             });
             if (data === "ok") {

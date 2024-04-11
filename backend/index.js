@@ -22,8 +22,8 @@ app.use(cookieParser());
 
 const fn=async()=>{
     try{
-        // await mongoose.connect(process.env.MONGO_URL);
-        await mongoose.connect('mongodb://127.0.0.1:27017/BLOGS');
+        await mongoose.connect(process.env.MONGO_URL);
+        // await mongoose.connect('mongodb://127.0.0.1:27017/BLOGS');
         console.log("db connected successfully")
     }catch(err){
         console.log("ERRORR:",err);

@@ -11,10 +11,10 @@ dotenv.config({
 });
 
 
-// app.use(cors({
-//     credentials:true,
-//     origin:'https://sci-spotfrontend.vercel.app/',
-// }));
+app.use(cors({
+    credentials:true,
+    origin:'https://science-spot.vercel.app/',
+}));
 
 app.use(express.json())
 app.use(cookieParser());

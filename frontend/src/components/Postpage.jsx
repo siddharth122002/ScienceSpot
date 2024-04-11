@@ -9,7 +9,7 @@ export default function Postpage() {
     const [edit,setEdit] = useState(false);
     useEffect(() => {
         const singlePost = async () => {
-            const {data} = await axios.get(`https://science-spot.vercel.app/post/${id}`,{
+            const {data} = await axios.get(`http://localhost:3000/post/${id}`,{
                 withCredentials:true,
             })
             setPost(data.post);

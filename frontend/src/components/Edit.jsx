@@ -11,7 +11,7 @@ export default function Create(){
     const { id } = useParams();
     useEffect(() => {
         const singlePost = async () => {
-            const {data} = await axios.get(`https://science-spot.vercel.app/post/${id}`,{
+            const {data} = await axios.get(`http://localhost:3000/post/${id}`,{
                 withCredentials:true,
             })
             setTitle(data.post.title)
@@ -30,7 +30,7 @@ export default function Create(){
         data.set('file',file[0]);
         data.set('id',id);
         try{
-            const res =await axios.put(`https://science-spot.vercel.app/post/${id}/edit`,data,
+            const res =await axios.put(`http://localhost:3000/post/${id}/edit`,data,
             {
                 withCredentials:true,
             })

@@ -10,7 +10,7 @@ export default function Register(){
         e.preventDefault();
         e.preventDefault();
         try{
-            const {data} =await axios.post('https://science-spot.vercel.app/register',{
+            const {data} =await axios.post('http://localhost:3000/register',{
                 name:name,
                 email:email,
                 password:password,

@@ -5,7 +5,7 @@ export default function Post(){
     const [posts,setPosts] = useState([]);
     useEffect(()=>{
         const getPosts = async()=>{
-            const {data} =await axios.get('https://science-spot.vercel.app/posts',{
+            const {data} =await axios.get('http://localhost:3000/posts',{
                 withCredentials:true,
             })
             setPosts(data);

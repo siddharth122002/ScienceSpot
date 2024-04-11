@@ -16,7 +16,7 @@ export default function Create(){
         data.set('article',article);
         data.set('file',file[0]);
     
-        const res =await axios.post('https://science-spot.vercel.app/create',data,
+        const res =await axios.post('http://localhost:3000/create',data,
         {
             withCredentials:true,
         })

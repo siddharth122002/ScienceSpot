@@ -50,7 +50,7 @@ router.post('/login',async(req,res)=>{
         return res.json("invalid email or password")
     }
     const token =await jwt.sign({name:user.name,id:user._id},secret);
-    res.cookie('token', token).json("ok")
+    res.cookie('token', token,{sameSite:'strict'}).json("ok")
 })
 
 router.post('/register',async(req,res)=>{

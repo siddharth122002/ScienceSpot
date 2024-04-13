@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
 import {Link} from 'react-router-dom'
+import Spinner from "./Spinner";
 export default function Post(){
     const [posts,setPosts] = useState([]);
+    const [loading,setLoading]=useState(false);
     useEffect(()=>{
+        setLoading(true);
         const getPosts = async()=>{
             const {data} =await axios.get('https://science-spot.vercel.app/posts',{
                 withCredentials:true,
             })
             setPosts(data);
+            setLoading(false)
         }
         getPosts();
     },[])
@@ -21,6 +25,9 @@ export default function Post(){
 
     return (
         <>
+        {loading ?(
+            <Spinner/>
+        ):(
         <div className="text-white flex-col">
             {posts.map((post,i)=>(
                 <Link to={`/post/${post._id}`} key={i}>
@@ -36,6 +43,7 @@ export default function Post(){
             </Link>
             ))}
         </div>
+        )}
         </>
     )
 }

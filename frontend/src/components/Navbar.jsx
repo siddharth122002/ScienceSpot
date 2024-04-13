@@ -25,7 +25,7 @@ export default function Home() {
 
     const logout = async () => {
         try {
-            const { data } = await axios.get('https://science-spot.vercel.app/logout', {
+            const { data } = await axios.get('http://localhost:3000/logout', {
                 withCredentials: true,
             });
             if (data === "ok") {

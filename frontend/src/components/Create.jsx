@@ -16,12 +16,17 @@ export default function Create(){
         data.set('article',article);
         data.set('file',file[0]);
     
-        const res =await axios.post('https://science-spot.vercel.app/create',data,
-        {
-            withCredentials:true,
-        })
-        if(res.data==="ok"){
-            setNav(true);
+        const token=localStorage.getItem('token');
+        if(token){
+            const res =await axios.post('https://science-spot.vercel.app/create',data,{
+                headers:{
+                    'auth':token,
+                },
+                withCredentials:true,
+            })
+            if(res.data==="ok"){
+                setNav(true);
+            }
         }
     }
     if(nav){

@@ -8,15 +8,24 @@ export default function Home() {
 
     useEffect(() => {
         const checkLoggedInStatus = async () => {
-            try {
-                const { data } = await axios.get('https://science-spot.vercel.app/', {
-                    withCredentials: true,
-                });
-                if (data !== "no") {
-                    setName(data);
+            const token=localStorage.getItem('token');
+            if(token){
+                try {
+
+                    const  data  = await axios.get('https://science-spot.vercel.app/', {
+                        headers:{
+                            'auth':token,
+                        },
+                        withCredentials:true,
+                    });
+
+                    if (data.data) {
+                        setName(data.data);
+                    }
                 }
-            } catch (error) {
-                console.error("Error checking authentication status:", error);
+                catch (error) {
+                    console.error("Error checking authentication status:", error);
+                }
             }
         };
 
@@ -25,13 +34,9 @@ export default function Home() {
 
     const logout = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3000/logout', {
-                withCredentials: true,
-            });
-            if (data === "ok") {
-                setName(null);
-                navigate('/');
-            }
+            localStorage.removeItem('token');
+            setName(null);
+            navigate('/');
         } catch (error) {
             console.error("Error logging out:", error);
         }

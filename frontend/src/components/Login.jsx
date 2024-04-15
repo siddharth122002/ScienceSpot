@@ -10,13 +10,14 @@ export default function Login() {
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('https://science-spot.vercel.app/login', {
+            const  data = await axios.post('https://science-spot.vercel.app/login', {
                 email: email,
                 password: password,
             }, {
                 withCredentials: true,
-            })
-            if (data === "ok") {
+            });
+            localStorage.setItem('token',data.data.token)
+            if (data.status == 200) {
                 setNav(true);
             }
         } catch (e) {

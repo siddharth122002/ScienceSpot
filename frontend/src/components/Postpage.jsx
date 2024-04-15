@@ -12,13 +12,18 @@ export default function Postpage() {
     useEffect(() => {
         setLoading(true);
         const singlePost = async () => {
-            const {data} = await axios.get(`https://science-spot.vercel.app/post/${id}`,{
-                withCredentials:true,
-            })
-            setPost(data.post);
-            setEdit(data.editable);
-            setLoading(false);
-            if(data==="no"){
+            const token = localStorage.getItem('token');
+            if(token){
+                const {data} = await axios.get(`https://science-spot.vercel.app/post/${id}`,{
+                    headers:{
+                        'auth':token
+                    },
+                    withCredentials:true,
+                })
+                setPost(data.post);
+                setEdit(data.editable);
+                setLoading(false);
+            }else{
                 setNav(true);
             }
         }

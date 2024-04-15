@@ -11,8 +11,7 @@ const {storage} = require('../cloudinary')
 const upload = multer({storage});
 
 const isLoggedIn =async(req,res,next)=>{
-    const token = req.cookies.token;
-    
+    const token = req.headers['auth'];
     if(!token){
         return res.send("no")
     }
@@ -23,17 +22,8 @@ const isLoggedIn =async(req,res,next)=>{
     }
     next();
 }
-
-router.get('/test',(req,res)=>{
-    res.send("working test");
-})
-
 router.get('/',isLoggedIn,async(req,res)=>{
-    console.log(req.user);
-    if(!req.user){
-        return res.send("no");
-    }
-    res.send("ok")
+    res.send(req.user.name)
 })
 
 
@@ -50,7 +40,8 @@ router.post('/login',async(req,res)=>{
         return res.json("invalid email or password")
     }
     const token =await jwt.sign({name:user.name,id:user._id},secret);
-    res.cookie('token', token,{sameSite:'Lax'}).json("ok")
+    // res.cookie('token', token).json("ok")
+    res.status(200).json({token})
 })
 
 router.post('/register',async(req,res)=>{
@@ -64,10 +55,6 @@ router.post('/register',async(req,res)=>{
     res.json("ok")
 })
 
-router.get('/logout',(req,res)=>{
-    res.clearCookie("token")
-    res.send("ok");
-})
 
 
 router.post('/create',isLoggedIn,upload.single('file'),async(req,res)=>{

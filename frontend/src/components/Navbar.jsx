@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-export default function Home() {
+export default function   Home() {
     const [name, setName] = useState(null);
     const navigate = useNavigate();
 

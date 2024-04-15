@@ -14,7 +14,7 @@ dotenv.config({
 app.use(cors({
     credentials:true,
     origin:'https://science-spot-frontend.vercel.app',
-}));
+}));;
 
 app.use(express.json())
 app.use(cookieParser());

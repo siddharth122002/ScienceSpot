@@ -8,11 +8,14 @@ export default function Post(){
     useEffect(()=>{
         setLoading(true);
         const getPosts = async()=>{
-            const {data} =await axios.get('https://science-spot.vercel.app/posts',{
-                withCredentials:true,
-            })
-            setPosts(data);
-            setLoading(false)
+            axios.get('https://science-spot.vercel.app/posts')
+                .then((res)=>{
+                    setPosts(res.data);
+                    setLoading(false)
+                })
+                .catch((e)=>{
+                    console.log(e)
+                })
         }
         getPosts();
     },[])

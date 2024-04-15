@@ -14,7 +14,7 @@ export default function Postpage() {
         const singlePost = async () => {
             const token = localStorage.getItem('token');
             if(token){
-                const {data} = await axios.get(`https://science-spot.vercel.app/post/${id}`,{
+                const {data} = await axios.get(`http://localhost:3000/post/${id}`,{
                     headers:{
                         'auth':token
                     },

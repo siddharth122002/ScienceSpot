@@ -26,47 +26,46 @@ export default function Register(){
         }
     }
     if(nav){
-        return <Navigate to='/'/>
+        return <Navigate to='/login'/>
     }
     return (
         <>
             <div className="flex justify-center items-center sm:h-screen mt-3">
-    <form className="bg-white rounded-lg p-8" onSubmit={(e) => registerHandler(e)}>
-        <div className="mb-4">
-            <input
-                className="shadow-lg border w-full py-2 px-3 text-gray-700"
-                type="text" value={name} placeholder="Name"
-                required
-                onChange={(e) => setName(e.target.value)}
-            />
-        </div>
-        <div className="mb-4">
-            <input
-                className="shadow-lg border w-full py-2 px-3 text-gray-700"
-                type="text" value={email} placeholder="Email"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-            />
-        </div>
-        <div className="mb-6">
-            <input
-                className="shadow-lg border w-full py-2 px-3 text-gray-700"
-                type="password" value={password} placeholder="Password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-            />
-        </div>
-        <div className="flex items-center justify-between">
-            <button
-                className="bg-red-700 hover:bg-red-800 text-white sm:font-bold py-2 px-4 rounded-lg"
-                type="submit"
-            >
-                Register
-            </button>
-        </div>
-    </form>
-</div>
-
+                <form className="bg-white rounded-lg p-8" onSubmit={(e) => registerHandler(e)}>
+                    <div className="mb-4">
+                        <input
+                            className="shadow-lg border w-full py-2 px-3 text-gray-700"
+                            type="text" value={name} placeholder="Name"
+                            required
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <input
+                            className="shadow-lg border w-full py-2 px-3 text-gray-700"
+                            type="text" value={email} placeholder="Email"
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <input
+                            className="shadow-lg border w-full py-2 px-3 text-gray-700"
+                            type="password" value={password} placeholder="Password"
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <button
+                            className="bg-red-700 hover:bg-red-800 text-white sm:font-bold py-2 px-4 rounded-lg"
+                            type="submit"
+                        >
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }

@@ -40,8 +40,11 @@ router.post('/login',async(req,res)=>{
         return res.json("invalid email or password")
     }
     const token =await jwt.sign({name:user.name,id:user._id},secret);
-    // res.cookie('token', token).json("ok")
-    res.status(200).json({token})
+    const userr = await User.findById(user._id);
+    res.status(200).json({
+        token:token,
+        name:userr.name,
+    })
 })
 
 router.post('/register',async(req,res)=>{

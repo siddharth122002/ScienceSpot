@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from "../context/UserContext";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [nav, setNav] = useState(false);
-
+    const {name,setName} = useContext(UserContext)
     const loginHandler = async (e) => {
         e.preventDefault();
         try {
@@ -19,6 +20,7 @@ export default function Login() {
             localStorage.setItem('token',data.data.token)
             if (data.status == 200) {
                 setNav(true);
+                setName(data.data.name)
             }
         } catch (e) {
             console.log(e);

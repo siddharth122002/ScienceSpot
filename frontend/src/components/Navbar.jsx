@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from "../context/UserContext";
 
 export default function   Home() {
-    const [name, setName] = useState(null);
+    // const [name, setName] = useState(null);
+    const {name,setName}=useContext(UserContext)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,6 +46,7 @@ export default function   Home() {
 
     const username = name ? name : null;
     return (
+        <>
         <div className="flex bg-red-900 justify-between items-center ">
             <Link to={'/'}><h1 className="sm:text-5xl m-4 font-bold text-slate-300 hover:cursor-pointer text-3xl">SciSpot</h1></Link>
             {username && (
@@ -59,5 +62,6 @@ export default function   Home() {
                 </div>
             )}
         </div>
+        </>
     );
 }

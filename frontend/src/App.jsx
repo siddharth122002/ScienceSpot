@@ -7,19 +7,22 @@ import Posts from './components/Posts'
 import Postpage from './components/Postpage'
 import Navbar from './components/Navbar'
 import Edit from './components/Edit'
+import {UserContextProvider } from './context/UserContext'
 function App() {
   return (
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={<Posts/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}></Route>
-        <Route path='/create' element={<Create/>}></Route>
-        <Route path='/post/:id' element={<Postpage/>}></Route>
-        <Route path='/post/:id/edit' element={<Edit/>}></Route>
-      </Routes>
-    </Router>
+    <UserContextProvider>
+      <Router>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Posts/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}></Route>
+          <Route path='/create' element={<Create/>}></Route>
+          <Route path='/post/:id' element={<Postpage/>}></Route>
+          <Route path='/post/:id/edit' element={<Edit/>}></Route>
+        </Routes>
+      </Router>
+    </UserContextProvider>
   )
 }
 
